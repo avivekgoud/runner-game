@@ -21,7 +21,7 @@ export class WorldSelectScreen {
                     <button class="btn btn-outline btn-back" id="world-btn-back">◀ BACK</button>
                     <h2 class="sub-title">SELECT ENVIRONMENT</h2>
                     <div class="currency-pills-mini">
-                        <span class="pill-coins">🪙 <span id="ws-coins">0</span></span>
+                        <span class="pill-coins">COINS: <span id="ws-coins">0</span></span>
                     </div>
                 </header>
 
@@ -53,7 +53,7 @@ export class WorldSelectScreen {
                 <div class="world-card glass-panel ${isSelected ? 'selected' : ''} ${!isUnlocked ? 'locked' : ''}">
                     <div class="world-card-preview" style="background: linear-gradient(180deg, ${w.skyColors[0]} 0%, ${w.groundColor} 100%)">
                         <span class="world-theme-tag">${w.theme}</span>
-                        ${!isUnlocked ? '<div class="lock-overlay"><span class="lock-icon">🔒</span></div>' : ''}
+                        ${!isUnlocked ? '<div class="lock-overlay"><span class="lock-icon">LOCKED</span></div>' : ''}
                     </div>
 
                     <div class="world-card-body">
@@ -64,8 +64,8 @@ export class WorldSelectScreen {
                         <p class="world-desc">${w.description}</p>
 
                         <div class="world-meta-row">
-                            <span>🎵 ${w.music.style.toUpperCase()} (${w.music.bpm} BPM)</span>
-                            <span>⚡ Lv. ${w.unlockLevel} Required</span>
+                            <span>STYLE: ${w.music.style.toUpperCase()} (${w.music.bpm} BPM)</span>
+                            <span>LV. ${w.unlockLevel} REQUIRED</span>
                         </div>
 
                         <div class="world-action-box">

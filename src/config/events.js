@@ -11,7 +11,7 @@ export const ACTIVE_EVENTS = [
         theme: 'cyber',
         description: 'The city power grid has supercharged! Earn +50% extra coins and score during this limited-time surge.',
         bannerGradient: 'linear-gradient(135deg, #4c1d95 0%, #06b6d4 100%)',
-        icon: '⚡',
+        icon: 'SURGE',
         startDate: '2026-09-01T00:00:00Z',
         endDate: '2026-10-31T23:59:59Z',
         coinBonusMultiplier: 1.5,

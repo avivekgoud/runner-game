@@ -20,8 +20,8 @@ export class AchievementsScreen {
                     <button class="btn btn-outline btn-back" id="ach-btn-back">◀ BACK</button>
                     <h2 class="sub-title">ACHIEVEMENT BADGES</h2>
                     <div class="currency-pills-mini">
-                        <span class="pill-coins">🪙 <span id="ach-coins">0</span></span>
-                        <span class="pill-gems">💎 <span id="ach-gems">0</span></span>
+                        <span class="pill-coins">COINS: <span id="ach-coins">0</span></span>
+                        <span class="pill-gems">GEMS: <span id="ach-gems">0</span></span>
                     </div>
                 </header>
 
@@ -60,8 +60,8 @@ export class AchievementsScreen {
                         <div class="flex-between">
                             <h3 class="ach-title">${ach.title}</h3>
                             <div class="ach-rewards">
-                                <span>🪙 ${ach.rewardCoins}</span>
-                                <span>💎 ${ach.rewardGems}</span>
+                                <span>+${ach.rewardCoins} COINS</span>
+                                <span>+${ach.rewardGems} GEMS</span>
                             </div>
                         </div>
                         <p class="ach-desc">${ach.desc}</p>

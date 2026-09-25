@@ -22,7 +22,7 @@ export class MainMenuScreen {
                 <!-- TOP HEADER BAR: Profile & Currencies -->
                 <header class="menu-header glass-panel">
                     <div class="profile-summary" id="btn-view-stats">
-                        <div class="player-avatar-badge" id="menu-avatar">⚡</div>
+                        <div class="player-avatar-badge" id="menu-avatar">CR</div>
                         <div class="player-info-meta">
                             <div class="player-name-row">
                                 <span class="player-username" id="menu-username">Runner</span>
@@ -36,14 +36,14 @@ export class MainMenuScreen {
 
                     <div class="currency-tally-group">
                         <div class="currency-pill coins-pill">
-                            <span class="currency-icon">🪙</span>
+                            <span class="currency-label">COINS</span>
                             <span class="currency-value" id="menu-coins">0</span>
                         </div>
                         <div class="currency-pill gems-pill">
-                            <span class="currency-icon">💎</span>
+                            <span class="currency-label">GEMS</span>
                             <span class="currency-value" id="menu-gems">0</span>
                         </div>
-                        <button class="icon-btn" id="menu-btn-settings" title="Settings">⚙️</button>
+                        <button class="icon-btn" id="menu-btn-settings" title="Settings">SET</button>
                     </div>
                 </header>
 
@@ -53,7 +53,7 @@ export class MainMenuScreen {
                         <div class="selected-world-badge" id="menu-world-badge">NEO CITY</div>
                         <div class="stage-character-visual">
                             <div class="character-preview-stand" id="menu-char-stand">
-                                <span class="character-emoji" id="menu-char-icon">🏃</span>
+                                <span class="character-badge" id="menu-char-icon">CR</span>
                             </div>
                             <div class="character-title-meta">
                                 <h3 id="menu-char-name">BLAZE</h3>
@@ -63,7 +63,6 @@ export class MainMenuScreen {
 
                         <!-- BIG PLAY BUTTON -->
                         <button class="btn btn-play-huge pulse-glow" id="menu-btn-play">
-                            <span class="play-icon">▶</span>
                             <span class="play-text">RUN NOW</span>
                         </button>
                     </div>
@@ -72,7 +71,7 @@ export class MainMenuScreen {
                     <div class="menu-sidebar-cards">
                         <!-- High Score Display -->
                         <div class="card-mini glass-panel">
-                            <div class="stat-mini-header">🏆 HIGH SCORE</div>
+                            <div class="stat-mini-header">HIGH SCORE</div>
                             <div class="stat-mini-value" id="menu-high-score">0</div>
                             <div class="stat-mini-sub" id="menu-best-dist">Best: 0 m</div>
                         </div>
@@ -80,7 +79,7 @@ export class MainMenuScreen {
                         <!-- Daily Reward / Streak Banner -->
                         <div class="card-mini glass-panel interactive" id="menu-streak-card">
                             <div class="flex-between">
-                                <div class="stat-mini-header">🔥 DAILY STREAK</div>
+                                <div class="stat-mini-header">DAILY STREAK</div>
                                 <span class="badge-dot" id="menu-reward-dot" style="display:none;"></span>
                             </div>
                             <div class="stat-mini-value" id="menu-streak-count">Day 1</div>
@@ -90,7 +89,7 @@ export class MainMenuScreen {
                         <!-- Active Mission Preview -->
                         <div class="card-mini glass-panel interactive" id="menu-mission-preview">
                             <div class="flex-between">
-                                <div class="stat-mini-header">🎯 DAILY MISSION</div>
+                                <div class="stat-mini-header">DAILY MISSION</div>
                                 <span class="badge-dot" id="menu-mission-dot" style="display:none;"></span>
                             </div>
                             <div class="mission-mini-desc" id="menu-mission-title">Loading mission...</div>
@@ -104,35 +103,35 @@ export class MainMenuScreen {
                 <!-- BOTTOM DOCK NAVIGATION -->
                 <footer class="menu-bottom-dock glass-panel">
                     <button class="dock-btn" id="dock-worlds">
-                        <span class="dock-icon">🌍</span>
+                        <span class="dock-icon">MAP</span>
                         <span class="dock-label">WORLDS</span>
                     </button>
                     <button class="dock-btn" id="dock-character">
-                        <span class="dock-icon">👤</span>
+                        <span class="dock-icon">RUN</span>
                         <span class="dock-label">RUNNERS</span>
                     </button>
                     <button class="dock-btn" id="dock-shop">
-                        <span class="dock-icon">🛍️</span>
+                        <span class="dock-icon">SHOP</span>
                         <span class="dock-label">SHOP</span>
                     </button>
                     <button class="dock-btn" id="dock-missions">
-                        <span class="dock-icon">📋</span>
+                        <span class="dock-icon">TASK</span>
                         <span class="dock-label">MISSIONS</span>
                     </button>
                     <button class="dock-btn" id="dock-achievements">
-                        <span class="dock-icon">🏅</span>
+                        <span class="dock-icon">BADGE</span>
                         <span class="dock-label">BADGES</span>
                     </button>
                     <button class="dock-btn" id="dock-leaderboard">
-                        <span class="dock-icon">🏆</span>
+                        <span class="dock-icon">RANK</span>
                         <span class="dock-label">RANKS</span>
                     </button>
                     <button class="dock-btn" id="dock-inventory">
-                        <span class="dock-icon">🎒</span>
+                        <span class="dock-icon">INV</span>
                         <span class="dock-label">INVENTORY</span>
                     </button>
                     <button class="dock-btn" id="dock-events">
-                        <span class="dock-icon">⚡</span>
+                        <span class="dock-icon">EVENT</span>
                         <span class="dock-label">EVENT</span>
                     </button>
                 </footer>

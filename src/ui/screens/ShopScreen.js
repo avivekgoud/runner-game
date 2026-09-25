@@ -27,8 +27,8 @@ export class ShopScreen {
                         <button class="tab-pill" data-tab="currency">CURRENCY EXCHANGE</button>
                     </div>
                     <div class="currency-pills-mini">
-                        <span class="pill-coins">🪙 <span id="shop-coins">0</span></span>
-                        <span class="pill-gems">💎 <span id="shop-gems">0</span></span>
+                        <span class="pill-coins">COINS: <span id="shop-coins">0</span></span>
+                        <span class="pill-gems">GEMS: <span id="shop-gems">0</span></span>
                     </div>
                 </header>
 
@@ -101,7 +101,7 @@ export class ShopScreen {
                             <button class="btn btn-disabled btn-block">MAX LEVEL</button>
                         ` : `
                             <button class="btn btn-primary btn-block btn-buy-upg" data-id="${upg.powerupId}" data-cost="${cost}">
-                                UPGRADE (🪙 ${cost.toLocaleString()})
+                                UPGRADE (${cost.toLocaleString()} COINS)
                             </button>
                         `}
                     </div>
@@ -146,7 +146,7 @@ export class ShopScreen {
                     </div>
                     <div class="shop-card-action">
                         <button class="btn btn-accent btn-block btn-buy-consumable" data-id="${item.id}" data-cost="${item.cost}">
-                            PURCHASE (🪙 ${item.cost.toLocaleString()})
+                            PURCHASE (${item.cost.toLocaleString()} COINS)
                         </button>
                     </div>
                 </div>
@@ -192,11 +192,11 @@ export class ShopScreen {
                     <div class="shop-card-action">
                         ${isFree ? `
                             <button class="btn ${canClaimFree ? 'btn-accent' : 'btn-disabled'} btn-block" id="btn-claim-free-gems">
-                                ${canClaimFree ? 'CLAIM FREE 💎 10' : 'CLAIMED (24h Cooldown)'}
+                                ${canClaimFree ? 'CLAIM FREE 10 GEMS' : 'CLAIMED (24h Cooldown)'}
                             </button>
                         ` : `
                             <button class="btn btn-primary btn-block btn-exchange-coins" data-coins="${ex.givesCoins}" data-cost="${ex.cost}">
-                                GET 🪙 ${ex.givesCoins.toLocaleString()} (💎 ${ex.cost})
+                                GET ${ex.givesCoins.toLocaleString()} COINS (${ex.cost} GEMS)
                             </button>
                         `}
                     </div>
@@ -227,7 +227,7 @@ export class ShopScreen {
                 if (this.ui.save.spendGems(cost)) {
                     this.ui.save.addCoins(coins);
                     this.ui.audio.playLevelUp();
-                    this.ui.showToast(`Converted 💎 ${cost} into 🪙 ${coins.toLocaleString()}!`, 'success');
+                    this.ui.showToast(`Converted ${cost} GEMS into ${coins.toLocaleString()} COINS!`, 'success');
                     this.renderContent();
                 } else {
                     this.ui.showToast('Not enough gems!', 'error');

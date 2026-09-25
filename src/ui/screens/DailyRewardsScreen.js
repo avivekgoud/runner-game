@@ -7,13 +7,13 @@ export class DailyRewardsScreen {
     constructor(uiManager) {
         this.ui = uiManager;
         this.rewards = [
-            { day: 1, title: 'Day 1', reward: '🪙 250 Coins', coins: 250, gems: 0, xp: 0, icon: '🪙' },
-            { day: 2, title: 'Day 2', reward: '⚡ 200 XP', coins: 0, gems: 0, xp: 200, icon: '⚡' },
-            { day: 3, title: 'Day 3', reward: '🪙 400 Coins + 💖 1 Revive', coins: 400, gems: 0, xp: 0, revives: 1, icon: '💖' },
-            { day: 4, title: 'Day 4', reward: '🪙 600 Coins', coins: 600, gems: 0, xp: 0, icon: '🪙' },
-            { day: 5, title: 'Day 5', reward: '💎 20 Gems', coins: 0, gems: 20, xp: 0, icon: '💎' },
-            { day: 6, title: 'Day 6', reward: '💖 2 Revive Tokens', coins: 0, gems: 0, xp: 0, revives: 2, icon: '💖' },
-            { day: 7, title: 'Day 7', reward: '👑 Solar Crown + 🪙 1,500 + 💎 35', coins: 1500, gems: 35, xp: 300, hat: 'golden_crown', icon: '👑' }
+            { day: 1, title: 'Day 1', reward: '250 Coins', coins: 250, gems: 0, xp: 0, icon: 'COINS' },
+            { day: 2, title: 'Day 2', reward: '200 XP', coins: 0, gems: 0, xp: 200, icon: 'XP' },
+            { day: 3, title: 'Day 3', reward: '400 Coins + 1 Revive', coins: 400, gems: 0, xp: 0, revives: 1, icon: 'REVIVE' },
+            { day: 4, title: 'Day 4', reward: '600 Coins', coins: 600, gems: 0, xp: 0, icon: 'COINS' },
+            { day: 5, title: 'Day 5', reward: '20 Gems', coins: 0, gems: 20, xp: 0, icon: 'GEMS' },
+            { day: 6, title: 'Day 6', reward: '2 Revive Tokens', coins: 0, gems: 0, xp: 0, revives: 2, icon: 'REVIVE' },
+            { day: 7, title: 'Day 7', reward: 'Solar Crown + 1,500 Coins + 35 Gems', coins: 1500, gems: 35, xp: 300, hat: 'golden_crown', icon: 'CROWN' }
         ];
 
         this.element = document.createElement('div');
@@ -27,7 +27,7 @@ export class DailyRewardsScreen {
                 <header class="sub-header flex-between">
                     <button class="btn btn-outline btn-back" id="daily-btn-back">◀ BACK</button>
                     <h2 class="sub-title">DAILY LOGIN REWARDS</h2>
-                    <div class="streak-tag-badge">🔥 <span id="daily-streak-badge">Streak: 1</span></div>
+                    <div class="streak-tag-badge"><span id="daily-streak-badge">Streak: 1</span></div>
                 </header>
 
                 <main class="daily-calendar-grid" id="daily-calendar"></main>
@@ -102,7 +102,7 @@ export class DailyRewardsScreen {
                     <div class="reward-icon">${r.icon}</div>
                     <div class="reward-desc">${r.reward}</div>
                     <div class="claim-status">
-                        ${isPast ? '✓ CLAIMED' : isToday ? '⭐ READY' : '🔒 LOCKED'}
+                        ${isPast ? 'CLAIMED' : isToday ? 'READY' : 'LOCKED'}
                     </div>
                 </div>
             `;

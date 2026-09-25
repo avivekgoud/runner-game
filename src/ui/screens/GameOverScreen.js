@@ -20,7 +20,7 @@ export class GameOverScreen {
         this.element.innerHTML = `
             <div class="gameover-card glass-panel">
                 <div class="gameover-header">
-                    <span class="record-badge" id="go-record-badge" style="display:none;">🎉 NEW HIGH SCORE!</span>
+                    <span class="record-badge" id="go-record-badge" style="display:none;">NEW HIGH SCORE!</span>
                     <h2 class="gameover-title">MISSION COMPLETED</h2>
                 </div>
 
@@ -64,7 +64,7 @@ export class GameOverScreen {
                 <!-- EMERGENCY REVIVE BOX -->
                 <div class="go-revive-box" id="go-revive-box">
                     <button class="btn btn-accent btn-block btn-lg pulse-glow" id="btn-revive-run">
-                        💖 EMERGENCY REVIVE (<span id="go-revive-cost">1 TOKEN</span>)
+                        EMERGENCY REVIVE (<span id="go-revive-cost">1 TOKEN</span>)
                     </button>
                 </div>
 
@@ -72,7 +72,7 @@ export class GameOverScreen {
                 <div class="go-actions-row">
                     <button class="btn btn-primary btn-lg flex-1" id="btn-play-again">PLAY AGAIN</button>
                     <button class="btn btn-secondary btn-lg flex-1" id="btn-return-home">HOME</button>
-                    <button class="btn btn-outline" id="btn-share-score" title="Share Score">📤</button>
+                    <button class="btn btn-outline" id="btn-share-score" title="Share Score">SHARE</button>
                 </div>
             </div>
         `;
@@ -159,7 +159,7 @@ export class GameOverScreen {
             if (d.consumables.revives > 0) {
                 reviveCostLabel.textContent = `${d.consumables.revives} TOKEN(S) LEFT`;
             } else {
-                reviveCostLabel.textContent = `💎 ${GAME_CONFIG.ECONOMY.REVIVE_COST_GEMS} GEMS`;
+                reviveCostLabel.textContent = `${GAME_CONFIG.ECONOMY.REVIVE_COST_GEMS} GEMS`;
             }
         } else {
             reviveBox.style.display = 'none';

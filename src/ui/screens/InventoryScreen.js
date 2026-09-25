@@ -24,7 +24,7 @@ export class InventoryScreen {
                     <button class="btn btn-outline btn-back" id="inv-btn-back">◀ BACK</button>
                     <h2 class="sub-title">RUNNER INVENTORY</h2>
                     <div class="currency-pills-mini">
-                        <span class="pill-coins">🪙 <span id="inv-coins">0</span></span>
+                        <span class="pill-coins">COINS: <span id="inv-coins">0</span></span>
                     </div>
                 </header>
 
@@ -57,7 +57,7 @@ export class InventoryScreen {
             const isEquipped = d.selectedCharacter === c.id;
             html += `
                 <div class="inv-card glass-panel ${isEquipped ? 'equipped' : ''}">
-                    <div class="inv-icon-box" style="background: ${c.visual.primaryColor}">🏃</div>
+                    <div class="inv-icon-box" style="background: ${c.visual.primaryColor}">CR</div>
                     <div class="inv-meta">
                         <span class="item-rarity-pill ${c.rarity.toLowerCase()}">${c.rarity}</span>
                         <h4>${c.name}</h4>
@@ -75,7 +75,7 @@ export class InventoryScreen {
         html += '<h3 class="inv-section-title">STORED CONSUMABLES</h3><div class="inv-grid">';
         html += `
             <div class="inv-card glass-panel">
-                <div class="inv-icon-box" style="background: #e11d48">💖</div>
+                <div class="inv-icon-box" style="background: #e11d48">REV</div>
                 <div class="inv-meta">
                     <h4>Revive Tokens</h4>
                     <span class="inv-sub">Instant emergency crash revival</span>
@@ -83,7 +83,7 @@ export class InventoryScreen {
                 <span class="inv-qty">x${d.consumables.revives}</span>
             </div>
             <div class="inv-card glass-panel">
-                <div class="inv-icon-box" style="background: #8b5cf6">🚀</div>
+                <div class="inv-icon-box" style="background: #8b5cf6">BST</div>
                 <div class="inv-meta">
                     <h4>Supersonic Headstarts</h4>
                     <span class="inv-sub">500m rocket launch on next run</span>

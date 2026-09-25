@@ -26,7 +26,7 @@ export class SettingsScreen {
                 <main class="settings-body-panel glass-panel">
                     <!-- AUDIO CONTROLS -->
                     <section class="settings-group">
-                        <h3 class="group-title">🔊 AUDIO & ACOUSTICS</h3>
+                        <h3 class="group-title">AUDIO & ACOUSTICS</h3>
                         <div class="setting-item flex-between">
                             <span>Mute All Audio</span>
                             <input type="checkbox" id="set-mute" ${s.soundMuted ? 'checked' : ''}>
@@ -43,7 +43,7 @@ export class SettingsScreen {
 
                     <!-- GRAPHICS & IMMERSION -->
                     <section class="settings-group">
-                        <h3 class="group-title">🎮 VISUALS & HAPTICS</h3>
+                        <h3 class="group-title">VISUALS & HAPTICS</h3>
                         <div class="setting-item flex-between">
                             <span>Screen Shake on Impact</span>
                             <input type="checkbox" id="set-shake" ${s.screenShake ? 'checked' : ''}>
@@ -64,7 +64,7 @@ export class SettingsScreen {
 
                     <!-- CONTROLS REFERENCE -->
                     <section class="settings-group">
-                        <h3 class="group-title">⌨️ CONTROLS SCHEME</h3>
+                        <h3 class="group-title">CONTROLS SCHEME</h3>
                         <div class="controls-reference-grid">
                             <div class="ctrl-row"><span>Jump / Double Jump:</span> <strong>SPACE / UP ARROW / W / SWIPE UP</strong></div>
                             <div class="ctrl-row"><span>Slide under Lasers:</span> <strong>DOWN ARROW / S / SWIPE DOWN</strong></div>
@@ -74,7 +74,7 @@ export class SettingsScreen {
 
                     <!-- DATA BACKUP & RESET -->
                     <section class="settings-group">
-                        <h3 class="group-title">💾 DATA & PROFILE</h3>
+                        <h3 class="group-title">DATA & PROFILE</h3>
                         <div class="setting-actions-row">
                             <button class="btn btn-outline" id="btn-export-save">EXPORT SAVE (JSON)</button>
                             <button class="btn btn-outline" id="btn-import-save">IMPORT SAVE</button>

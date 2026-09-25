@@ -1,4 +1,4 @@
-# ⚡ CYBER RUNNER: OVERDRIVE
+# CYBER RUNNER: OVERDRIVE
 
 A complete, production-quality 2D endless runner arcade game built from scratch using HTML5 Canvas, modern modular ES6 JavaScript, Web Audio API procedural synthesis, and responsive CSS3 glassmorphism styling.
 
@@ -11,7 +11,7 @@ Playable directly in any modern desktop, tablet, or mobile browser with zero ins
 
 ---
 
-## 🎮 Game Features
+## Game Features
 
 ### 1. Core Endless Runner Gameplay
 - **Sub-Pixel Movement & Physics**: Realistic gravity, terminal falling velocity, coyote time (jump forgiveness after leaving ledges), and jump buffering for arcade precision.
@@ -71,18 +71,18 @@ Playable directly in any modern desktop, tablet, or mobile browser with zero ins
 
 ---
 
-## 🕹️ Controls Guide
+## Controls Guide
 
 | Action | Desktop Keyboard | Mobile / Touch |
 | :--- | :--- | :--- |
-| **Jump / Double Jump** | `Space` / `↑ Up Arrow` / `W` | Swipe Up / Tap / `▲ JUMP` Button |
-| **Slide under Lasers** | `↓ Down Arrow` / `S` | Swipe Down / `▼ SLIDE` Button |
-| **Pause Run** | `Esc` / `P` | `⏸` On-screen Pause Button |
+| **Jump / Double Jump** | `Space` / `↑ Up Arrow` / `W` | Swipe Up / Tap / `JUMP` Button |
+| **Slide under Lasers** | `↓ Down Arrow` / `S` | Swipe Down / `SLIDE` Button |
+| **Pause Run** | `Esc` / `P` | `II` On-screen Pause Button |
 | **Mute Audio Toggle** | `M` | Settings Screen Toggle |
 
 ---
 
-## 🏗️ Architecture & Project Structure
+## Architecture & Project Structure
 
 ```
 runner game/
@@ -126,7 +126,7 @@ runner game/
 
 ---
 
-## 🚀 Running the Game Locally
+## Running the Game Locally
 
 Because this game is built with standard modern ES6 modules, it simply requires an HTTP server to serve the module files.
 
@@ -140,7 +140,7 @@ python -m http.server 8080
 ```
 Open your browser at [http://localhost:8080](http://localhost:8080).
 
-## 🌐 Deploying Online
+## Deploying Online
 
 ### Deploy on Render (Recommended)
 You can deploy this game on [Render](https://render.com) for free in seconds:
@@ -167,7 +167,7 @@ Render will deploy the site immediately on a free global CDN with SSL HTTPS (e.g
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **A Vivek Goud**  
 *Computer Science Student*  
@@ -176,5 +176,5 @@ Render will deploy the site immediately on a free global CDN with SSL HTTPS (e.g
 
 ---
 
-## 📜 License
+## License
 Developed for commercial-grade gaming performance under the MIT License.

@@ -12,7 +12,7 @@ export const CUSTOMIZATIONS = {
             cost: 0,
             costType: 'free',
             unlocked: true,
-            icon: '🧢'
+            icon: 'NONE'
         },
         cyber_cap: {
             id: 'cyber_cap',
@@ -22,7 +22,7 @@ export const CUSTOMIZATIONS = {
             costType: 'coins',
             unlocked: false,
             color: '#38bdf8',
-            icon: '🧢'
+            icon: 'CAP'
         },
         neon_visor: {
             id: 'neon_visor',
@@ -32,7 +32,7 @@ export const CUSTOMIZATIONS = {
             costType: 'coins',
             unlocked: false,
             color: '#ec4899',
-            icon: '🥽'
+            icon: 'VISOR'
         },
         cyber_fedora: {
             id: 'cyber_fedora',
@@ -42,7 +42,7 @@ export const CUSTOMIZATIONS = {
             costType: 'coins',
             unlocked: false,
             color: '#334155',
-            icon: '🎩'
+            icon: 'FEDORA'
         },
         mecha_horns: {
             id: 'mecha_horns',
@@ -52,7 +52,7 @@ export const CUSTOMIZATIONS = {
             costType: 'gems',
             unlocked: false,
             color: '#f43f5e',
-            icon: '😈'
+            icon: 'HORNS'
         },
         plasma_halo: {
             id: 'plasma_halo',
@@ -62,7 +62,7 @@ export const CUSTOMIZATIONS = {
             costType: 'gems',
             unlocked: false,
             color: '#a855f7',
-            icon: '😇'
+            icon: 'HALO'
         },
         golden_crown: {
             id: 'golden_crown',
@@ -72,7 +72,7 @@ export const CUSTOMIZATIONS = {
             costType: 'gems',
             unlocked: false,
             color: '#f59e0b',
-            icon: '👑'
+            icon: 'CROWN'
         }
     },
 

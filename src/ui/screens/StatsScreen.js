@@ -39,18 +39,18 @@ export class StatsScreen {
         const d = this.ui.save.data;
 
         const statList = [
-            { label: 'Highest Score', val: d.highScore.toLocaleString(), icon: '🏆' },
-            { label: 'Longest Run', val: `${(s.longestRun || 0).toLocaleString()} m`, icon: '🏃' },
-            { label: 'Total Distance', val: `${(s.totalDistance || 0).toLocaleString()} m`, icon: '🌍' },
-            { label: 'Total Runs Completed', val: (s.totalRuns || 0).toLocaleString(), icon: '👟' },
-            { label: 'Total Coins Collected', val: (s.totalCoins || 0).toLocaleString(), icon: '🪙' },
-            { label: 'Obstacles Avoided', val: (s.obstaclesAvoided || 0).toLocaleString(), icon: '🛡️' },
-            { label: 'Power-Ups Picked Up', val: (s.powerupsCollected || 0).toLocaleString(), icon: '⚡' },
-            { label: 'Total Jumps', val: (s.totalJumps || 0).toLocaleString(), icon: '🦘' },
-            { label: 'Total Slides', val: (s.totalSlides || 0).toLocaleString(), icon: '🛹' },
-            { label: 'Runners Unlocked', val: `${d.unlockedCharacters.length} / 6`, icon: '👥' },
-            { label: 'Daily Streak', val: `${s.dailyStreak || 1} Days`, icon: '🔥' },
-            { label: 'Current Player Level', val: `Level ${d.level}`, icon: '⭐' }
+            { label: 'Highest Score', val: d.highScore.toLocaleString(), icon: 'SCORE' },
+            { label: 'Longest Run', val: `${(s.longestRun || 0).toLocaleString()} m`, icon: 'RUN' },
+            { label: 'Total Distance', val: `${(s.totalDistance || 0).toLocaleString()} m`, icon: 'DIST' },
+            { label: 'Total Runs Completed', val: (s.totalRuns || 0).toLocaleString(), icon: 'RUNS' },
+            { label: 'Total Coins Collected', val: (s.totalCoins || 0).toLocaleString(), icon: 'COINS' },
+            { label: 'Obstacles Avoided', val: (s.obstaclesAvoided || 0).toLocaleString(), icon: 'DODGE' },
+            { label: 'Power-Ups Picked Up', val: (s.powerupsCollected || 0).toLocaleString(), icon: 'PWR' },
+            { label: 'Total Jumps', val: (s.totalJumps || 0).toLocaleString(), icon: 'JUMP' },
+            { label: 'Total Slides', val: (s.totalSlides || 0).toLocaleString(), icon: 'SLIDE' },
+            { label: 'Runners Unlocked', val: `${d.unlockedCharacters.length} / 6`, icon: 'CREW' },
+            { label: 'Daily Streak', val: `${s.dailyStreak || 1} Days`, icon: 'STRK' },
+            { label: 'Current Player Level', val: `Level ${d.level}`, icon: 'LVL' }
         ];
 
         const grid = this.element.querySelector('#stats-items-grid');

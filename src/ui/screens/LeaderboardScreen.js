@@ -9,14 +9,14 @@ export class LeaderboardScreen {
         this.activeCategory = 'global'; // 'global', 'friends', 'weekly'
 
         this.mockRunners = [
-            { name: 'Vortex_X', score: 184200, dist: 6420, avatar: '🤖' },
-            { name: 'CyberKitsune', score: 142500, dist: 5120, avatar: '🦊' },
-            { name: 'NeonSamurai', score: 112000, dist: 4300, avatar: '⚔️' },
-            { name: 'Ghost_Shift', score: 98400, dist: 3890, avatar: '👻' },
-            { name: 'PulseRider', score: 76000, dist: 3100, avatar: '🏍️' },
-            { name: 'GlitchRunner', score: 54300, dist: 2450, avatar: '👾' },
-            { name: 'SkyDrifter', score: 32100, dist: 1720, avatar: '🦅' },
-            { name: 'AeroZero', score: 18500, dist: 1100, avatar: '💨' }
+            { name: 'Vortex_X', score: 184200, dist: 6420, avatar: 'VX' },
+            { name: 'CyberKitsune', score: 142500, dist: 5120, avatar: 'CK' },
+            { name: 'NeonSamurai', score: 112000, dist: 4300, avatar: 'NS' },
+            { name: 'Ghost_Shift', score: 98400, dist: 3890, avatar: 'GS' },
+            { name: 'PulseRider', score: 76000, dist: 3100, avatar: 'PR' },
+            { name: 'GlitchRunner', score: 54300, dist: 2450, avatar: 'GR' },
+            { name: 'SkyDrifter', score: 32100, dist: 1720, avatar: 'SD' },
+            { name: 'AeroZero', score: 18500, dist: 1100, avatar: 'AZ' }
         ];
 
         this.element = document.createElement('div');
@@ -75,7 +75,7 @@ export class LeaderboardScreen {
             name: `${d.username} (YOU)`,
             score: d.highScore || 0,
             dist: d.bestDistance || 0,
-            avatar: '⚡',
+            avatar: 'YOU',
             isPlayer: true
         };
 
@@ -85,7 +85,7 @@ export class LeaderboardScreen {
         const container = this.element.querySelector('#lb-rows-container');
         container.innerHTML = list.map((entry, idx) => {
             const rank = idx + 1;
-            const rankBadge = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`;
+            const rankBadge = `#${rank}`;
 
             return `
                 <div class="lb-row ${entry.isPlayer ? 'player-row' : ''}">

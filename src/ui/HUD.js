@@ -35,10 +35,10 @@ export class HUD {
                     <span class="hud-value" id="hud-distance">0 m</span>
                 </div>
                 <div class="hud-stat-box coins-box">
-                    <span class="hud-icon">🪙</span>
+                    <span class="hud-label">COINS</span>
                     <span class="hud-value" id="hud-coins">0</span>
                 </div>
-                <button class="hud-btn pause-btn" id="hud-pause-btn" title="Pause Game">⏸</button>
+                <button class="hud-btn pause-btn" id="hud-pause-btn" title="Pause Game">II</button>
             </div>
 
             <!-- Combo Multiplier Gauge -->
@@ -145,12 +145,12 @@ export class HUD {
         const p = this.engine.player;
         const activeList = [];
 
-        if (p.hasShield) activeList.push({ name: 'Shield', icon: '🛡️', time: p.shieldTimer, max: 12, col: '#34d399' });
-        if (p.hasMagnet) activeList.push({ name: 'Magnet', icon: '🧲', time: p.magnetTimer, max: 10, col: '#38bdf8' });
-        if (p.hasCoinDoubler) activeList.push({ name: '2x Coins', icon: '🪙', time: p.coinDoublerTimer, max: 10, col: '#facc15' });
-        if (p.hasScoreBoost) activeList.push({ name: 'Score x2', icon: '⚡', time: p.scoreBoostTimer, max: 10, col: '#fb923c' });
-        if (p.hasSpeedBoost) activeList.push({ name: 'Dash', icon: '🚀', time: p.speedBoostTimer, max: 6, col: '#e879f9' });
-        if (p.hasSlowMo) activeList.push({ name: 'Slow-Mo', icon: '⏳', time: p.slowMoTimer, max: 7, col: '#818cf8' });
+        if (p.hasShield) activeList.push({ name: 'Shield', icon: 'SHD', time: p.shieldTimer, max: 12, col: '#34d399' });
+        if (p.hasMagnet) activeList.push({ name: 'Magnet', icon: 'MAG', time: p.magnetTimer, max: 10, col: '#38bdf8' });
+        if (p.hasCoinDoubler) activeList.push({ name: '2x Coins', icon: '2X', time: p.coinDoublerTimer, max: 10, col: '#facc15' });
+        if (p.hasScoreBoost) activeList.push({ name: 'Score x2', icon: '3X', time: p.scoreBoostTimer, max: 10, col: '#fb923c' });
+        if (p.hasSpeedBoost) activeList.push({ name: 'Dash', icon: 'DASH', time: p.speedBoostTimer, max: 6, col: '#e879f9' });
+        if (p.hasSlowMo) activeList.push({ name: 'Slow-Mo', icon: 'SLOW', time: p.slowMoTimer, max: 7, col: '#818cf8' });
 
         this.powerupsContainer.innerHTML = activeList.map(item => `
             <div class="hud-pu-badge" style="border-color: ${item.col}">

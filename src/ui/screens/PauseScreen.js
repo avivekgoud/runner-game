@@ -14,7 +14,7 @@ export class PauseScreen {
     render() {
         this.element.innerHTML = `
             <div class="pause-card glass-panel">
-                <div class="pause-icon">⏸</div>
+                <div class="pause-icon">II</div>
                 <h2 class="pause-title">MISSION PAUSED</h2>
 
                 <div class="pause-actions-list">

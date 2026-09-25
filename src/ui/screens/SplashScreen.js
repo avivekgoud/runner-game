@@ -12,7 +12,7 @@ export class SplashScreen {
         this.element.innerHTML = `
             <div class="splash-content">
                 <div class="splash-logo-wrapper">
-                    <div class="splash-icon">⚡</div>
+                    <div class="splash-icon">CR</div>
                     <h1 class="splash-title">CYBER RUNNER</h1>
                     <div class="splash-subtitle">OVERDRIVE</div>
                 </div>

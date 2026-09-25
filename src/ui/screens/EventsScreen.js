@@ -21,7 +21,7 @@ export class EventsScreen {
                 <header class="sub-header flex-between">
                     <button class="btn btn-outline btn-back" id="evt-btn-back">◀ BACK</button>
                     <h2 class="sub-title">SEASONAL EVENT</h2>
-                    <div class="event-timer-badge">⏳ <span id="evt-timer">Ends in: 18d 14h</span></div>
+                    <div class="event-timer-badge"><span id="evt-timer">Ends in: 18d 14h</span></div>
                 </header>
 
                 <main class="event-body-layout">
@@ -32,8 +32,8 @@ export class EventsScreen {
                             <h1 class="event-title">${this.event.title}</h1>
                             <p class="event-desc">${this.event.description}</p>
                             <div class="event-perk-pills">
-                                <span class="perk-pill">⚡ +50% COIN BOOST</span>
-                                <span class="perk-pill">🎯 +25% SCORE MULTIPLIER</span>
+                                <span class="perk-pill">+50% COIN BOOST</span>
+                                <span class="perk-pill">+25% SCORE MULTIPLIER</span>
                             </div>
                         </div>
                     </div>
@@ -64,8 +64,8 @@ export class EventsScreen {
                 <div class="mission-header-row flex-between">
                     <h4 class="mission-title">${m.title}</h4>
                     <div class="mission-rewards">
-                        <span>🪙 ${m.rewardCoins}</span>
-                        <span>💎 ${m.rewardGems}</span>
+                        <span>+${m.rewardCoins} COINS</span>
+                        <span>+${m.rewardGems} GEMS</span>
                     </div>
                 </div>
                 <p class="mission-desc">${m.desc}</p>

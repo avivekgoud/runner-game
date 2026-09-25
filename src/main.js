@@ -50,7 +50,7 @@ class App {
             }
         });
 
-        console.log('⚡ Cyber Runner: Overdrive v1.0.0 Pro Initialized Successfully!');
+        console.log('[Cyber Runner: Overdrive] v1.0.0 Pro Initialized Successfully.');
     }
 }
 

@@ -23,8 +23,8 @@ export class MissionsScreen {
                         <button class="tab-pill" data-tab="weekly">WEEKLY CHALLENGES</button>
                     </div>
                     <div class="currency-pills-mini">
-                        <span class="pill-coins">🪙 <span id="missions-coins">0</span></span>
-                        <span class="pill-gems">💎 <span id="missions-gems">0</span></span>
+                        <span class="pill-coins">COINS: <span id="missions-coins">0</span></span>
+                        <span class="pill-gems">GEMS: <span id="missions-gems">0</span></span>
                     </div>
                 </header>
 
@@ -68,9 +68,9 @@ export class MissionsScreen {
                     <div class="mission-header-row flex-between">
                         <h3 class="mission-title">${m.title}</h3>
                         <div class="mission-rewards">
-                            <span>🪙 ${m.rewardCoins}</span>
-                            <span>💎 ${m.rewardGems}</span>
-                            <span>⚡ ${m.rewardXp} XP</span>
+                            <span>+${m.rewardCoins} COINS</span>
+                            <span>+${m.rewardGems} GEMS</span>
+                            <span>+${m.rewardXp} XP</span>
                         </div>
                     </div>
                     <p class="mission-desc">${m.desc}</p>

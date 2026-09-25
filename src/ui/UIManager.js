@@ -117,12 +117,12 @@ export class UIManager {
         });
 
         events.on('achievement:unlocked', (ach) => {
-            this.showToast(`🏆 Achievement Unlocked: ${ach.title}!`, 'success');
+            this.showToast(`Achievement Unlocked: ${ach.title}!`, 'success');
             this.audio.playLevelUp();
         });
 
         events.on('mission:completed', (mission) => {
-            this.showToast(`🎯 Protocol Complete: ${mission.title}!`, 'info');
+            this.showToast(`Protocol Complete: ${mission.title}!`, 'info');
         });
     }
 

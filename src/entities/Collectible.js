@@ -112,12 +112,12 @@ export class Collectible {
         ctx.arc(0, 0, 10, 0, Math.PI * 2);
         ctx.fill();
 
-        // Embossed star
+        // Embossed letter C
         ctx.fillStyle = '#b45309';
-        ctx.font = 'bold 10px system-ui';
+        ctx.font = '900 10px monospace';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('★', 0, 0.5);
+        ctx.fillText('C', 0, 0.5);
 
         // Specular highlight glint
         ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';

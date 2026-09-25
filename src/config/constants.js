@@ -59,14 +59,14 @@ export const GAME_CONFIG = {
             color: '#38bdf8',
             radius: 340,            // attraction radius in pixels
             pullSpeed: 750,
-            icon: '🧲'
+            icon: 'MAG'
         },
         SHIELD: {
             id: 'shield',
             name: 'Energy Shield',
             duration: 12.0,
             color: '#34d399',
-            icon: '🛡️'
+            icon: 'SHD'
         },
         COIN_DOUBLER: {
             id: 'coin_doubler',
@@ -74,7 +74,7 @@ export const GAME_CONFIG = {
             duration: 10.0,
             color: '#facc15',
             multiplier: 2,
-            icon: '🪙'
+            icon: '2X'
         },
         SCORE_BOOST: {
             id: 'score_boost',
@@ -82,7 +82,7 @@ export const GAME_CONFIG = {
             duration: 10.0,
             color: '#fb923c',
             multiplier: 2,
-            icon: '⚡'
+            icon: '3X'
         },
         SPEED_BOOST: {
             id: 'speed_boost',
@@ -90,14 +90,14 @@ export const GAME_CONFIG = {
             duration: 6.0,
             color: '#e879f9',
             invincible: true,
-            icon: '🚀'
+            icon: 'DASH'
         },
         SLOW_MO: {
             id: 'slow_mo',
             name: 'Time Warp',
             duration: 7.0,
             color: '#818cf8',
-            icon: '⏳'
+            icon: 'SLOW'
         }
     },
 

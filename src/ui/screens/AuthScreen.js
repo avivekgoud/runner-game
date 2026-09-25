@@ -17,7 +17,7 @@ export class AuthScreen {
         this.element.innerHTML = `
             <div class="auth-card glass-panel">
                 <div class="auth-header">
-                    <div class="auth-brand-logo">⚡</div>
+                    <div class="auth-brand-logo">CR</div>
                     <h2 class="auth-title" id="auth-title">WELCOME RUNNER</h2>
                     <p class="auth-subtitle" id="auth-desc">Sign in to save your progression, records, and cosmetics.</p>
                 </div>
@@ -43,7 +43,7 @@ export class AuthScreen {
                             <label>PASSWORD</label>
                             <div class="input-wrapper">
                                 <input type="password" class="input-field" id="login-password" placeholder="Enter password" required autocomplete="current-password">
-                                <button type="button" class="btn-toggle-pwd" data-target="login-password">👁️</button>
+                                <button type="button" class="btn-toggle-pwd" data-target="login-password">SHOW</button>
                             </div>
                         </div>
                         <div class="form-row mb-3 flex-between">
@@ -72,14 +72,14 @@ export class AuthScreen {
                             <label>PASSWORD</label>
                             <div class="input-wrapper">
                                 <input type="password" class="input-field" id="signup-password" placeholder="Min 6 characters" required autocomplete="new-password">
-                                <button type="button" class="btn-toggle-pwd" data-target="signup-password">👁️</button>
+                                <button type="button" class="btn-toggle-pwd" data-target="signup-password">SHOW</button>
                             </div>
                         </div>
                         <div class="form-group mb-3">
                             <label>CONFIRM PASSWORD</label>
                             <div class="input-wrapper">
                                 <input type="password" class="input-field" id="signup-confirm-password" placeholder="Re-enter password" required autocomplete="new-password">
-                                <button type="button" class="btn-toggle-pwd" data-target="signup-confirm-password">👁️</button>
+                                <button type="button" class="btn-toggle-pwd" data-target="signup-confirm-password">SHOW</button>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-accent btn-block mb-2" id="btn-submit-signup">CREATE ACCOUNT</button>
@@ -143,10 +143,10 @@ export class AuthScreen {
                 const input = this.element.querySelector(`#${targetId}`);
                 if (input.type === 'password') {
                     input.type = 'text';
-                    btn.textContent = '🔒';
+                    btn.textContent = 'HIDE';
                 } else {
                     input.type = 'password';
-                    btn.textContent = '👁️';
+                    btn.textContent = 'SHOW';
                 }
             };
         });

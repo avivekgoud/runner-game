@@ -31,8 +31,8 @@ export class CharacterScreen {
                         <button class="tab-pill" data-tab="trails">TRAILS</button>
                     </div>
                     <div class="currency-pills-mini">
-                        <span class="pill-coins">🪙 <span id="char-coins">0</span></span>
-                        <span class="pill-gems">💎 <span id="char-gems">0</span></span>
+                        <span class="pill-coins">COINS: <span id="char-coins">0</span></span>
+                        <span class="pill-gems">GEMS: <span id="char-gems">0</span></span>
                     </div>
                 </header>
 
@@ -40,7 +40,7 @@ export class CharacterScreen {
                     <!-- LEFT COLUMN: Character Visualizer & Stat Cards -->
                     <div class="char-preview-panel glass-panel">
                         <div class="char-display-avatar" id="char-preview-avatar">
-                            <span class="char-large-emoji">🏃</span>
+                            <span class="char-large-badge">CR</span>
                         </div>
                         <div class="char-hero-meta">
                             <span class="rarity-badge" id="char-rarity">COMMON</span>
@@ -127,7 +127,7 @@ export class CharacterScreen {
             return `
                 <div class="item-card glass-panel ${isInspecting ? 'inspecting' : ''} ${isEquipped ? 'equipped' : ''} ${!isUnlocked ? 'locked' : ''}" data-id="${c.id}">
                     <div class="item-icon-box" style="background: ${c.visual.primaryColor}">
-                        <span class="item-emoji">🏃</span>
+                        <span class="item-badge">CR</span>
                     </div>
                     <div class="item-info">
                         <span class="item-rarity-pill ${c.rarity.toLowerCase()}">${c.rarity}</span>
@@ -157,7 +157,7 @@ export class CharacterScreen {
             return `
                 <div class="item-card glass-panel ${isEquipped ? 'equipped' : ''} ${!isUnlocked ? 'locked' : ''}">
                     <div class="item-icon-box" style="background: ${s.primary || '#38bdf8'}">
-                        <span class="item-emoji">🥋</span>
+                        <span class="item-badge">SKIN</span>
                     </div>
                     <div class="item-info">
                         <span class="item-rarity-pill ${s.rarity.toLowerCase()}">${s.rarity}</span>
@@ -171,7 +171,7 @@ export class CharacterScreen {
                             <button class="btn btn-sm btn-primary btn-equip-skin" data-id="${s.id}">EQUIP</button>
                         ` : `
                             <button class="btn btn-sm btn-accent btn-buy-skin" data-id="${s.id}" data-cost="${s.cost}" data-type="${s.costType}">
-                                ${s.costType === 'gems' ? `💎 ${s.cost}` : `🪙 ${s.cost}`}
+                                ${s.costType === 'gems' ? `${s.cost} GEMS` : `${s.cost} COINS`}
                             </button>
                         `}
                     </div>
@@ -232,7 +232,7 @@ export class CharacterScreen {
                             <button class="btn btn-sm btn-primary btn-equip-hat" data-id="${h.id}">EQUIP</button>
                         ` : `
                             <button class="btn btn-sm btn-accent btn-buy-hat" data-id="${h.id}" data-cost="${h.cost}" data-type="${h.costType}">
-                                ${h.costType === 'gems' ? `💎 ${h.cost}` : `🪙 ${h.cost}`}
+                                ${h.costType === 'gems' ? `${h.cost} GEMS` : `${h.cost} COINS`}
                             </button>
                         `}
                     </div>
@@ -279,7 +279,7 @@ export class CharacterScreen {
             return `
                 <div class="item-card glass-panel ${isEquipped ? 'equipped' : ''} ${!isUnlocked ? 'locked' : ''}">
                     <div class="item-icon-box" style="background: ${t.color}">
-                        <span class="item-emoji">✨</span>
+                        <span class="item-badge">FX</span>
                     </div>
                     <div class="item-info">
                         <span class="item-rarity-pill ${t.rarity.toLowerCase()}">${t.rarity}</span>
@@ -293,7 +293,7 @@ export class CharacterScreen {
                             <button class="btn btn-sm btn-primary btn-equip-trail" data-id="${t.id}">EQUIP</button>
                         ` : `
                             <button class="btn btn-sm btn-accent btn-buy-trail" data-id="${t.id}" data-cost="${t.cost}" data-type="${t.costType}">
-                                ${t.costType === 'gems' ? `💎 ${t.cost}` : `🪙 ${t.cost}`}
+                                ${t.costType === 'gems' ? `${t.cost} GEMS` : `${t.cost} COINS`}
                             </button>
                         `}
                     </div>
@@ -363,7 +363,7 @@ export class CharacterScreen {
         } else {
             actionBox.innerHTML = `
                 <button class="btn btn-accent btn-block" id="btn-buy-runner">
-                    UNLOCK RUNNER (${c.costType === 'gems' ? `💎 ${c.cost}` : `🪙 ${c.cost}`})
+                    UNLOCK RUNNER (${c.costType === 'gems' ? `${c.cost} GEMS` : `${c.cost} COINS`})
                 </button>
             `;
             actionBox.querySelector('#btn-buy-runner').onclick = () => {

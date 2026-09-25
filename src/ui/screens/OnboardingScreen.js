@@ -11,25 +11,25 @@ export class OnboardingScreen {
         this.steps = [
             {
                 title: 'LOCOMOTION & AUTO-RUN',
-                icon: '🏃',
+                icon: 'RUN',
                 text: 'Your runner sprints forward automatically, gathering momentum as you survive longer. Stay alert and watch for obstacles ahead!',
                 controls: 'Keyboard: Arrow Keys / WASD • Mobile: Swipes & Virtual Buttons'
             },
             {
                 title: 'LEAP OVER HAZARDS',
-                icon: '🦘',
+                icon: 'JUMP',
                 text: 'Press Space, Up Arrow, or Swipe Up to jump over ground spikes, crates, and deep pits. Some characters can even Double Jump mid-air!',
-                controls: 'SPACE / ▲ UP ARROW / SWIPE UP'
+                controls: 'SPACE / UP ARROW / SWIPE UP'
             },
             {
                 title: 'SLIDE UNDER LASERS',
-                icon: '🛹',
+                icon: 'SLIDE',
                 text: 'Overhead laser barriers and low ceiling hazards will crash your run! Slide low under them to clear safely.',
-                controls: '▼ DOWN ARROW / S KEY / SWIPE DOWN'
+                controls: 'DOWN ARROW / S KEY / SWIPE DOWN'
             },
             {
                 title: 'HARVEST COINS & POWER-UPS',
-                icon: '🧲',
+                icon: 'BONUS',
                 text: 'Collect golden credits and blue gems. Grab power-ups like the Coin Magnet, Energy Shield, and Hyper Dash to supercharge your score multiplier!',
                 controls: 'Combos multiply score when you chain coins without getting hit!'
             }
@@ -45,7 +45,7 @@ export class OnboardingScreen {
             <div class="onboarding-card glass-panel">
                 <div class="onboarding-step-indicator" id="step-dots"></div>
 
-                <div class="onboarding-icon" id="step-icon">🏃</div>
+                <div class="onboarding-icon" id="step-icon">RUN</div>
                 <h2 class="onboarding-title" id="step-title">ACADEMY TRAINING</h2>
                 <p class="onboarding-text" id="step-text"></p>
 
