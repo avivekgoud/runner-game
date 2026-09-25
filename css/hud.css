@@ -1,0 +1,208 @@
+/* ==========================================================================
+   IN-GAME HUD & MOBILE VIRTUAL CONTROLS
+   ========================================================================== */
+
+.game-hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hud-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    pointer-events: auto;
+}
+
+.hud-stat-box {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+}
+
+.hud-stat-box.coins-box {
+    flex-direction: row;
+    gap: 8px;
+    font-size: 18px;
+}
+
+.hud-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+}
+
+.hud-value {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.hud-btn.pause-btn {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.18s;
+}
+.hud-btn.pause-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* COMBO GAUGE */
+.hud-combo-wrapper {
+    position: absolute;
+    top: 76px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hud-combo-badge {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px currentColor;
+}
+
+.hud-combo-bar-bg {
+    width: 130px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.hud-combo-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--cyan);
+    transition: width 0.1s linear;
+}
+
+/* POWER-UP TIMERS */
+.hud-powerups-container {
+    position: absolute;
+    top: 76px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hud-pu-badge {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid #38bdf8;
+    padding: 6px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    animation: bounceIn 0.25s ease-out;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.6); opacity: 0; }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.hud-pu-icon { font-size: 14px; }
+.hud-pu-time { color: #ffffff; }
+
+/* MOBILE / TOUCH VIRTUAL BUTTONS */
+.mobile-controls-overlay {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    width: 100%;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: auto;
+}
+
+.virtual-btn {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: transform 0.1s, border-color 0.1s;
+}
+
+.virtual-btn:active {
+    transform: scale(0.9);
+    border-color: var(--cyan);
+    background: rgba(56, 189, 248, 0.25);
+}
+
+.virtual-btn.slide-btn {
+    border-color: rgba(236, 72, 153, 0.4);
+}
+.virtual-btn.slide-btn:active {
+    border-color: var(--accent);
+    background: rgba(236, 72, 153, 0.3);
+}
+
+.virtual-btn.jump-btn {
+    border-color: rgba(6, 182, 212, 0.4);
+}
+.virtual-btn.jump-btn:active {
+    border-color: var(--cyan);
+    background: rgba(6, 182, 212, 0.3);
+}
+
+@media (min-width: 1025px) {
+    /* Hide on-screen buttons on large desktop screens unless touch is preferred */
+    .mobile-controls-overlay {
+        opacity: 0.4;
+        transition: opacity 0.2s;
+    }
+    .mobile-controls-overlay:hover {
+        opacity: 0.9;
+    }
+}
