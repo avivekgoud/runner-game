@@ -146,5 +146,14 @@ Open your browser at [http://localhost:8080](http://localhost:8080).
 
 ---
 
+## 👨‍💻 Author
+
+**A Vivek Goud**  
+*Computer Science Student*  
+- **GitHub:** [@avivekgoud](https://github.com/avivekgoud)  
+- **Email:** [a.vivek1a@gmail.com](mailto:a.vivek1a@gmail.com)  
+
+---
+
 ## 📜 License
 Developed for commercial-grade gaming performance under the MIT License.

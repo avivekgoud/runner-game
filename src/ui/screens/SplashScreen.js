@@ -26,7 +26,7 @@ export class SplashScreen {
 
                 <div class="splash-footer">
                     <span class="version-tag">VERSION 1.0.0 PRO</span>
-                    <span class="copyright-tag">© 2026 CYBERNETIC STUDIOS</span>
+                    <span class="copyright-tag">CREATED BY A VIVEK GOUD</span>
                 </div>
             </div>
         `;
