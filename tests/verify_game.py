@@ -16,6 +16,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 REQUIRED_FILES = [
     "index.html",
+    "render.yaml",
     "README.md",
     "css/main.css",
     "css/ui.css",

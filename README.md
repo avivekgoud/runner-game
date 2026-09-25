@@ -7,6 +7,7 @@ Playable directly in any modern desktop, tablet, or mobile browser with zero ins
 ![Version](https://img.shields.io/badge/version-1.0.0%20Pro-cyan)
 ![Platform](https://img.shields.io/badge/platform-Desktop%20%7C%20Tablet%20%7C%20Mobile-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/avivekgoud/runner-game)
 
 ---
 
@@ -139,10 +140,30 @@ python -m http.server 8080
 ```
 Open your browser at [http://localhost:8080](http://localhost:8080).
 
-### Option B: Deploying to GitHub Pages
-1. Go to repository Settings > Pages.
-2. Select branch `main` (or `master`) and folder `/ (root)`.
-3. Click Save. Your game will be live instantly!
+## 🌐 Deploying Online
+
+### Deploy on Render (Recommended)
+You can deploy this game on [Render](https://render.com) for free in seconds:
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/avivekgoud/runner-game)
+
+#### Manual Steps on Render Dashboard:
+1. Go to [dashboard.render.com](https://dashboard.render.com) and log in with your GitHub account.
+2. Click **New +** and select **Static Site** (or **Blueprint** to use `render.yaml`).
+3. Select your repository: `https://github.com/avivekgoud/runner-game`.
+4. Configure settings:
+   - **Name**: `runner-game` (or your chosen name)
+   - **Branch**: `main`
+   - **Build Command**: *(leave empty)*
+   - **Publish Directory**: `.`
+5. Click **Create Static Site**.
+Render will deploy the site immediately on a free global CDN with SSL HTTPS (e.g. `https://runner-game.onrender.com`).
+
+### Deploy on GitHub Pages
+1. Go to your GitHub repository **Settings > Pages**.
+2. Under "Build and deployment", select Source: **Deploy from a branch**.
+3. Choose branch `main` and folder `/ (root)`.
+4. Click **Save**. Your game will be live in ~1 minute!
 
 ---
 
