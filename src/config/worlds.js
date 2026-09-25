@@ -1,24 +1,24 @@
 /**
  * Worlds / Environments Configuration
- * 5 unique, visually rich worlds with distinct color palettes, obstacles,
- * parallax backdrops, and synthesized musical scales.
+ * 5 distinct, visually clean worlds with vibrant color palettes,
+ * smooth parallax backdrops, and synthesized musical scales.
  */
 
 export const WORLDS = {
     neo_city: {
         id: 'neo_city',
         name: 'Neo City',
-        theme: 'Cyberpunk Metropolis',
-        description: 'A neon-drenched metropolis with towering skyscrapers and speeding hovercars.',
+        theme: 'Twilight Metropolis',
+        description: 'A vibrant skyline under evening twilight with sleek skyscrapers and speeding hovercraft.',
         unlockLevel: 1,
         unlockCost: 0,
-        skyColors: ['#090919', '#171233', '#2d1b4e'],
-        groundColor: '#1e1b4b',
-        groundAccent: '#06b6d4',
-        groundGrid: '#312e81',
+        skyColors: ['#0f172a', '#1e1b4b', '#312e81', '#4338ca'],
+        groundColor: '#1e293b',
+        groundAccent: '#38bdf8',
+        groundGrid: '#334155',
         particles: {
             type: 'dust',
-            color: 'rgba(6, 182, 212, 0.4)',
+            color: 'rgba(56, 189, 248, 0.4)',
             rate: 2
         },
         decorations: ['billboard', 'streetlight', 'cyber_building', 'hologram'],
@@ -35,14 +35,14 @@ export const WORLDS = {
     emerald_forest: {
         id: 'emerald_forest',
         name: 'Emerald Forest',
-        theme: 'Enchanted Woodlands',
-        description: 'Bioluminescent ancient woods with ancient ruins, giant mossy branches, and glowing spores.',
+        theme: 'Lush Woodlands',
+        description: 'Vibrant mossy woodlands filled with glowing flora, giant canopies, and firefly spores.',
         unlockLevel: 3,
         unlockCost: 600,
-        skyColors: ['#022c22', '#064e3b', '#065f46'],
-        groundColor: '#042f2e',
-        groundAccent: '#10b981',
-        groundGrid: '#134e4a',
+        skyColors: ['#022c22', '#064e3b', '#065f46', '#047857'],
+        groundColor: '#064e3b',
+        groundAccent: '#34d399',
+        groundGrid: '#0f766e',
         particles: {
             type: 'firefly',
             color: 'rgba(52, 211, 153, 0.6)',
@@ -62,13 +62,13 @@ export const WORLDS = {
     sunset_desert: {
         id: 'sunset_desert',
         name: 'Sunset Dunes',
-        theme: 'Golden Wasteland',
-        description: 'Vast red-sand dunes lit by twin setting suns, ancient pyramids, and swirling sandstorms.',
+        theme: 'Golden Canyon',
+        description: 'Warm glowing terracotta sand dunes lit by a massive setting sun and ancient monuments.',
         unlockLevel: 7,
         unlockCost: 1500,
-        skyColors: ['#451a03', '#78350f', '#b45309', '#f59e0b'],
+        skyColors: ['#451a03', '#7c2d12', '#c2410c', '#f59e0b'],
         groundColor: '#7c2d12',
-        groundAccent: '#f59e0b',
+        groundAccent: '#fbbf24',
         groundGrid: '#9a3412',
         particles: {
             type: 'sand',
@@ -89,13 +89,13 @@ export const WORLDS = {
     frost_peak: {
         id: 'frost_peak',
         name: 'Frost Peak',
-        theme: 'Glacial Caverns',
-        description: 'Treacherous glaciers and jagged ice caves with frozen crystals and blowing blizzards.',
+        theme: 'Glacial Dawn',
+        description: 'Crisp ice peaks and shimmering glaciers under a vibrant arctic morning sky.',
         unlockLevel: 12,
         unlockCost: 3000,
-        skyColors: ['#082f49', '#0c4a6e', '#0369a1'],
+        skyColors: ['#082f49', '#0369a1', '#0284c7', '#38bdf8'],
         groundColor: '#0f172a',
-        groundAccent: '#38bdf8',
+        groundAccent: '#7dd3fc',
         groundGrid: '#1e293b',
         particles: {
             type: 'snow',
@@ -115,18 +115,18 @@ export const WORLDS = {
 
     cyber_2099: {
         id: 'cyber_2099',
-        name: 'Cyberpunk 2099',
-        theme: 'Orbital Skyway',
-        description: 'High-altitude mag-lev expressway over an infinite hyper-city of lasers and chrome.',
+        name: 'Cyber Horizon',
+        theme: 'Midnight Skyway',
+        description: 'Sleek orbital roadway suspended over a sea of electric city lights and stars.',
         unlockLevel: 18,
         unlockCost: 6000,
-        skyColors: ['#18022b', '#3b0764', '#581c87'],
-        groundColor: '#2e1065',
-        groundAccent: '#ec4899',
-        groundGrid: '#4c1d95',
+        skyColors: ['#09090b', '#18181b', '#27272a', '#3f3f46'],
+        groundColor: '#18181b',
+        groundAccent: '#f43f5e',
+        groundGrid: '#27272a',
         particles: {
             type: 'warp',
-            color: 'rgba(236, 72, 153, 0.6)',
+            color: 'rgba(244, 63, 94, 0.6)',
             rate: 4
         },
         decorations: ['maglev_rail', 'floating_drone', 'holographic_orb', 'plasma_pylon'],

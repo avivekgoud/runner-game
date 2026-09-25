@@ -46,23 +46,26 @@ export class PowerUp {
 
         const cx = this.x + this.width / 2;
         const cy = this.y + this.height / 2;
-        const pulse = 1.0 + Math.sin(this.animTime * 5) * 0.12;
+        const pulse = 1.0 + Math.sin(this.animTime * 4.5) * 0.08;
 
-        // Glowing outer halo
+        // Soft ground drop-shadow beneath floating power-up
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.22)';
+        ctx.beginPath();
+        ctx.ellipse(cx, 560 + 2, 14, 4, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Glowing outer circle
         ctx.fillStyle = this.config.color;
-        ctx.shadowColor = this.config.color;
-        ctx.shadowBlur = 18;
         ctx.beginPath();
         ctx.arc(cx, cy, 18 * pulse, 0, Math.PI * 2);
         ctx.fill();
 
         // Capsule boundary
         ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 2.5;
         ctx.stroke();
 
         // Icon inside
-        ctx.shadowBlur = 0;
         ctx.font = '16px system-ui';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';

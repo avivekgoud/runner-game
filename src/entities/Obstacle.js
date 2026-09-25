@@ -1,7 +1,7 @@
 /**
  * Obstacle Entity
- * Handles multiple hazard types (spikes, crates, overhead laser beams, flying patrol drones),
- * animations, collision detection with the player, and near-miss dodge detection for combos.
+ * Modern, clean hazard types (smooth spikes, hurdles, overhead laser barriers, patrol drones),
+ * animations, collision detection, and near-miss dodge detection for combos.
  */
 
 export const OBSTACLE_TYPES = {
@@ -37,17 +37,16 @@ export class Obstacle {
                 this.height = 44;
                 break;
             case OBSTACLE_TYPES.LASER_BARRIER:
-                this.width = 38;
-                this.height = 68;
-                // Laser is suspended in the air; bottom clearance allows sliding under
-                this.bottomClearance = 38;
+                this.width = 40;
+                this.height = 70;
+                this.bottomClearance = 38; // clearance to slide under
                 break;
             case OBSTACLE_TYPES.PATROL_DRONE:
-                this.width = 46;
+                this.width = 44;
                 this.height = 36;
                 this.baseY = this.y;
-                this.bobSpeed = 3.5;
-                this.bobRange = 30;
+                this.bobSpeed = 3.2;
+                this.bobRange = 26;
                 break;
             case OBSTACLE_TYPES.TALL_BARRIER:
                 this.width = 40;
@@ -67,7 +66,7 @@ export class Obstacle {
             this.y = this.baseY + Math.sin(this.animTime * this.bobSpeed) * this.bobRange;
         }
 
-        // Deactivate when well off-screen to the left
+        // Deactivate when off-screen to the left
         if (this.x + this.width < -100) {
             this.active = false;
         }
@@ -75,7 +74,6 @@ export class Obstacle {
 
     getHitbox() {
         if (this.type === OBSTACLE_TYPES.LASER_BARRIER) {
-            // Only top portion is solid! Bottom 38px is clear for sliding
             return {
                 x: this.x + 4,
                 y: this.y,
@@ -85,7 +83,6 @@ export class Obstacle {
         }
 
         if (this.type === OBSTACLE_TYPES.SPIKES) {
-            // Triangle hitbox approximation
             return {
                 x: this.x + 6,
                 y: this.y + 8,
@@ -113,7 +110,6 @@ export class Obstacle {
     }
 
     checkDodge(playerX) {
-        // Player has successfully passed this obstacle without colliding
         if (!this.dodged && this.x + this.width < playerX) {
             this.dodged = true;
             return true;
@@ -123,6 +119,14 @@ export class Obstacle {
 
     render(ctx, worldTheme = 'neo_city') {
         ctx.save();
+
+        // Soft ground shadow for grounded obstacles
+        if (this.type !== OBSTACLE_TYPES.PATROL_DRONE) {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+            ctx.beginPath();
+            ctx.ellipse(this.x + this.width / 2, this.y + this.height + 2, this.width * 0.5, 4, 0, 0, Math.PI * 2);
+            ctx.fill();
+        }
 
         switch (this.type) {
             case OBSTACLE_TYPES.SPIKES:
@@ -149,125 +153,143 @@ export class Obstacle {
     }
 
     renderSpikes(ctx, worldTheme) {
-        ctx.fillStyle = (worldTheme === 'frost_peak') ? '#38bdf8' :
-                        (worldTheme === 'sunset_desert') ? '#ea580c' :
-                        (worldTheme === 'emerald_forest') ? '#10b981' : '#f43f5e';
+        const color = (worldTheme === 'frost_peak') ? '#38bdf8' :
+                      (worldTheme === 'sunset_desert') ? '#ea580c' :
+                      (worldTheme === 'emerald_forest') ? '#10b981' : '#f43f5e';
 
         const spikeCount = 3;
         const w = this.width / spikeCount;
 
         for (let i = 0; i < spikeCount; i++) {
             const sx = this.x + i * w;
+            ctx.fillStyle = color;
             ctx.beginPath();
-            ctx.moveTo(sx, this.y + this.height);
+            ctx.moveTo(sx + 2, this.y + this.height);
             ctx.lineTo(sx + w / 2, this.y);
-            ctx.lineTo(sx + w, this.y + this.height);
+            ctx.lineTo(sx + w - 2, this.y + this.height);
             ctx.closePath();
             ctx.fill();
 
-            // Highlight edge
-            ctx.strokeStyle = '#ffffff';
-            ctx.lineWidth = 1;
+            // Crisp highlight on left edge
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(sx + 2, this.y + this.height);
+            ctx.lineTo(sx + w / 2, this.y);
             ctx.stroke();
         }
     }
 
     renderCrate(ctx, worldTheme) {
-        ctx.fillStyle = (worldTheme === 'cyber_2099') ? '#4c1d95' :
-                        (worldTheme === 'frost_peak') ? '#0c4a6e' : '#334155';
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-
-        // Border & X cross
-        ctx.strokeStyle = (worldTheme === 'cyber_2099') ? '#ec4899' :
-                          (worldTheme === 'frost_peak') ? '#7dd3fc' : '#94a3b8';
-        ctx.lineWidth = 3;
-        ctx.strokeRect(this.x + 2, this.y + 2, this.width - 4, this.height - 4);
-
+        // Rounded sleek hurdle/crate
+        ctx.fillStyle = '#1e293b';
         ctx.beginPath();
-        ctx.moveTo(this.x + 6, this.y + 6);
-        ctx.lineTo(this.x + this.width - 6, this.y + this.height - 6);
-        ctx.moveTo(this.x + this.width - 6, this.y + 6);
-        ctx.lineTo(this.x + 6, this.y + this.height - 6);
+        ctx.roundRect(this.x, this.y, this.width, this.height, 8);
+        ctx.fill();
+
+        // Accent border
+        const accent = (worldTheme === 'cyber_2099') ? '#f43f5e' :
+                       (worldTheme === 'frost_peak') ? '#38bdf8' :
+                       (worldTheme === 'sunset_desert') ? '#f59e0b' : '#38bdf8';
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // Inner icon/slash
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(this.x + 10, this.y + 10);
+        ctx.lineTo(this.x + this.width - 10, this.y + this.height - 10);
+        ctx.moveTo(this.x + this.width - 10, this.y + 10);
+        ctx.lineTo(this.x + 10, this.y + this.height - 10);
         ctx.stroke();
     }
 
     renderLaserBarrier(ctx, worldTheme) {
         const solidHeight = this.height - this.bottomClearance;
 
-        // Top emitter block
-        ctx.fillStyle = '#1e293b';
-        ctx.fillRect(this.x, this.y, this.width, 16);
+        // Top emitter node
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath();
+        ctx.roundRect(this.x, this.y, this.width, 16, 6);
+        ctx.fill();
 
-        // Pulsing red/cyan laser beam
-        const pulse = 0.7 + Math.sin(this.animTime * 12) * 0.3;
-        ctx.fillStyle = (worldTheme === 'cyber_2099') ? `rgba(236, 72, 153, ${pulse})` : `rgba(244, 63, 94, ${pulse})`;
-        ctx.shadowColor = ctx.fillStyle;
-        ctx.shadowBlur = 15;
-        ctx.fillRect(this.x + 6, this.y + 16, this.width - 12, solidHeight - 16);
-        ctx.shadowBlur = 0;
+        ctx.strokeStyle = '#f43f5e';
+        ctx.lineWidth = 2;
+        ctx.stroke();
 
-        // Warning striped bottom indicator
-        ctx.fillStyle = '#facc15';
-        ctx.fillRect(this.x, this.y + solidHeight - 6, this.width, 6);
+        // Laser beam
+        const pulse = 0.8 + Math.sin(this.animTime * 8) * 0.2;
+        ctx.fillStyle = `rgba(244, 63, 94, ${pulse})`;
+        ctx.fillRect(this.x + 8, this.y + 16, this.width - 16, solidHeight - 16);
 
-        // "SLIDE" arrow indicator underneath
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-        ctx.font = 'bold 11px system-ui';
+        // Friendly slide indicator pill
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.75)';
+        ctx.beginPath();
+        ctx.roundRect(this.x - 6, this.y + this.height - 18, this.width + 12, 16, 8);
+        ctx.fill();
+
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 10px system-ui';
         ctx.textAlign = 'center';
-        ctx.fillText('▼ SLIDE', this.x + this.width / 2, this.y + this.height - 12);
+        ctx.fillText('▼ SLIDE', this.x + this.width / 2, this.y + this.height - 6);
     }
 
     renderDrone(ctx, worldTheme) {
         const cx = this.x + this.width / 2;
         const cy = this.y + this.height / 2;
 
-        // Drone central body
-        ctx.fillStyle = '#0f172a';
+        // Soft drop shadow below flying drone onto ground
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
+        ctx.beginPath();
+        ctx.ellipse(cx, this.baseY + 120, 20, 4, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Drone sleek body
+        ctx.fillStyle = '#1e293b';
         ctx.beginPath();
         ctx.arc(cx, cy, 14, 0, Math.PI * 2);
         ctx.fill();
 
-        // Glowing scanning eye
-        ctx.fillStyle = '#f43f5e';
-        ctx.shadowColor = '#f43f5e';
-        ctx.shadowBlur = 10;
+        // Glowing visor / eye
+        ctx.fillStyle = '#38bdf8';
         ctx.beginPath();
-        ctx.arc(cx, cy, 6, 0, Math.PI * 2);
+        ctx.arc(cx + 4, cy, 5, 0, Math.PI * 2);
         ctx.fill();
-        ctx.shadowBlur = 0;
 
-        // Rotor arms & spinning blades
+        // Sleek rotor bar
         ctx.strokeStyle = '#64748b';
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 2.5;
         ctx.beginPath();
-        ctx.moveTo(cx - 20, cy - 8);
-        ctx.lineTo(cx + 20, cy - 8);
+        ctx.moveTo(cx - 18, cy - 8);
+        ctx.lineTo(cx + 18, cy - 8);
         ctx.stroke();
 
-        const bladeOffset = Math.sin(this.animTime * 28) * 14;
-        ctx.strokeStyle = 'rgba(203, 213, 225, 0.8)';
+        // Spinning rotor blades
+        const offset = Math.sin(this.animTime * 24) * 12;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.moveTo(cx - 20 - bladeOffset, cy - 12);
-        ctx.lineTo(cx - 20 + bladeOffset, cy - 12);
-        ctx.moveTo(cx + 20 - bladeOffset, cy - 12);
-        ctx.lineTo(cx + 20 + bladeOffset, cy - 12);
+        ctx.moveTo(cx - 18 - offset, cy - 11);
+        ctx.lineTo(cx - 18 + offset, cy - 11);
+        ctx.moveTo(cx + 18 - offset, cy - 11);
+        ctx.lineTo(cx + 18 + offset, cy - 11);
         ctx.stroke();
     }
 
     renderTallBarrier(ctx, worldTheme) {
-        ctx.fillStyle = '#1e1b4b';
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.fillStyle = '#1e293b';
+        ctx.beginPath();
+        ctx.roundRect(this.x, this.y, this.width, this.height, 10);
+        ctx.fill();
 
-        // Neon outline
-        ctx.strokeStyle = '#06b6d4';
-        ctx.lineWidth = 3;
-        ctx.strokeRect(this.x + 2, this.y + 2, this.width - 4, this.height - 4);
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
 
-        // Danger hazard stripes
-        ctx.fillStyle = '#facc15';
-        for (let i = 0; i < this.height; i += 16) {
-            ctx.fillRect(this.x + 6, this.y + i, this.width - 12, 6);
-        }
+        // Modern glowing vertical strip
+        ctx.fillStyle = '#38bdf8';
+        ctx.fillRect(this.x + this.width / 2 - 2, this.y + 12, 4, this.height - 24);
     }
 }

@@ -359,9 +359,18 @@ export class Player {
     render(ctx) {
         ctx.save();
 
+        // 1. Soft Ground Drop-Shadow beneath the runner
+        const groundY = GAME_CONFIG.PHYSICS.GROUND_Y;
+        const distFromGround = Math.max(0, groundY - (this.y + this.height));
+        const shadowScale = Math.max(0.25, 1.0 - distFromGround / 240);
+        ctx.fillStyle = `rgba(0, 0, 0, ${0.3 * shadowScale})`;
+        ctx.beginPath();
+        ctx.ellipse(this.x + this.width / 2, groundY + 2, (this.width * 0.5) * shadowScale, 5 * shadowScale, 0, 0, Math.PI * 2);
+        ctx.fill();
+
         // Invulnerability blinking
         if (this.invulnerableTimer > 0 && Math.floor(this.animTime * 15) % 2 === 0) {
-            ctx.globalAlpha = 0.35;
+            ctx.globalAlpha = 0.4;
         }
 
         const cx = this.x + this.width / 2;
@@ -377,109 +386,141 @@ export class Player {
         const primary = skinDef.primary || vis.primaryColor;
         const secondary = skinDef.secondary || vis.secondaryColor;
         const accent = skinDef.accent || vis.accentColor;
-        const glow = vis.glowColor;
 
-        // Render Legs / Running cycle
+        // 2. Fluttering Scarf / Energy Ribbon (wind animation)
+        if (this.state !== PLAYER_STATES.DEAD) {
+            const scarfWave = Math.sin(this.animTime * 14) * 8;
+            ctx.fillStyle = accent;
+            ctx.beginPath();
+            ctx.moveTo(this.x + 10, this.y + 22);
+            ctx.quadraticCurveTo(this.x - 14, this.y + 18 + scarfWave, this.x - 28, this.y + 24 + scarfWave * 1.5);
+            ctx.lineTo(this.x - 26, this.y + 32 + scarfWave * 1.5);
+            ctx.quadraticCurveTo(this.x - 12, this.y + 26 + scarfWave, this.x + 10, this.y + 28);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        // 3. Running Legs with clean rounded sneakers
         if (this.state === PLAYER_STATES.RUNNING) {
-            const runPhase = this.animTime * 16;
+            const runPhase = this.animTime * 15;
             const legOffset1 = Math.sin(runPhase) * 16;
             const legOffset2 = Math.sin(runPhase + Math.PI) * 16;
 
             // Back leg
             ctx.fillStyle = secondary;
-            ctx.fillRect(this.x + 10, this.y + this.height - 24 + legOffset2 * 0.4, 10, 24);
+            ctx.beginPath();
+            ctx.roundRect(this.x + 10, this.y + this.height - 24 + legOffset2 * 0.4, 9, 22, 4);
+            ctx.fill();
+            // Back sneaker
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.roundRect(this.x + 10, this.y + this.height - 6 + legOffset2 * 0.4, 12, 6, 3);
+            ctx.fill();
 
             // Front leg
             ctx.fillStyle = primary;
-            ctx.fillRect(this.x + 24, this.y + this.height - 24 + legOffset1 * 0.4, 10, 24);
+            ctx.beginPath();
+            ctx.roundRect(this.x + 23, this.y + this.height - 24 + legOffset1 * 0.4, 9, 22, 4);
+            ctx.fill();
+            // Front sneaker
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.roundRect(this.x + 23, this.y + this.height - 6 + legOffset1 * 0.4, 12, 6, 3);
+            ctx.fill();
         } else if (this.state === PLAYER_STATES.SLIDING) {
-            // Sliding posture
+            // Low crouch sliding posture
             ctx.fillStyle = primary;
-            ctx.fillRect(this.x + 2, this.y + this.height - 18, 38, 16);
+            ctx.beginPath();
+            ctx.roundRect(this.x + 2, this.y + this.height - 20, 38, 18, 8);
+            ctx.fill();
+            // Sneaker back
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.roundRect(this.x - 4, this.y + this.height - 10, 10, 6, 3);
+            ctx.fill();
         } else {
-            // Jump / In-air posture
+            // Airborne Jump posture
             ctx.fillStyle = primary;
-            ctx.fillRect(this.x + 12, this.y + this.height - 20, 10, 20);
-            ctx.fillRect(this.x + 22, this.y + this.height - 15, 10, 15);
+            ctx.beginPath();
+            ctx.roundRect(this.x + 11, this.y + this.height - 22, 9, 18, 4);
+            ctx.roundRect(this.x + 22, this.y + this.height - 18, 9, 15, 4);
+            ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.roundRect(this.x + 11, this.y + this.height - 7, 11, 5, 2);
+            ctx.roundRect(this.x + 22, this.y + this.height - 5, 11, 5, 2);
+            ctx.fill();
         }
 
-        // Torso / Body
-        const bodyY = this.state === PLAYER_STATES.SLIDING ? this.y + 4 : this.y + 18;
-        const bodyH = this.state === PLAYER_STATES.SLIDING ? 20 : 32;
+        // 4. Torso / Jacket
+        const bodyY = this.state === PLAYER_STATES.SLIDING ? this.y + 6 : this.y + 20;
+        const bodyH = this.state === PLAYER_STATES.SLIDING ? 20 : 30;
 
         ctx.fillStyle = primary;
         ctx.beginPath();
-        ctx.roundRect(this.x + 8, bodyY, this.width - 16, bodyH, 6);
+        ctx.roundRect(this.x + 8, bodyY, this.width - 16, bodyH, 10);
         ctx.fill();
 
-        // Chest Core Reactor / Accent
-        ctx.fillStyle = accent;
-        ctx.shadowColor = accent;
-        ctx.shadowBlur = 8;
-        ctx.beginPath();
-        ctx.arc(this.x + this.width / 2, bodyY + bodyH * 0.45, 4, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.shadowBlur = 0; // reset shadow
-
-        // Head / Helmet (only if not sliding flat)
+        // 5. Head & Sports Visor
         if (this.state !== PLAYER_STATES.SLIDING) {
-            const headY = this.y + 2;
+            const headY = this.y + 3;
+            // Round head
             ctx.fillStyle = primary;
             ctx.beginPath();
-            ctx.roundRect(this.x + 10, headY, 24, 20, 6);
+            ctx.roundRect(this.x + 10, headY, 24, 20, 10);
             ctx.fill();
 
-            // Visor
-            ctx.fillStyle = vis.visorColor || '#38bdf8';
-            ctx.shadowColor = vis.visorColor || '#38bdf8';
-            ctx.shadowBlur = 10;
+            // Aerodynamic Visor / Sunglasses
+            ctx.fillStyle = '#0f172a';
             ctx.beginPath();
-            ctx.roundRect(this.x + 18, headY + 5, 16, 8, 3);
+            ctx.roundRect(this.x + 16, headY + 5, 18, 8, 4);
             ctx.fill();
-            ctx.shadowBlur = 0;
+
+            // Visor bright reflection
+            ctx.fillStyle = '#38bdf8';
+            ctx.beginPath();
+            ctx.roundRect(this.x + 20, headY + 6, 12, 5, 2);
+            ctx.fill();
 
             // Render Hat customization
             this.renderHat(ctx, this.x + 22, headY);
         }
 
-        // Energy Shield Visual Bubble
+        // 6. Soft Energy Shield Visual Bubble
         if (this.hasShield) {
-            const pulse = 1.0 + Math.sin(this.animTime * 8) * 0.05;
+            const pulse = 1.0 + Math.sin(this.animTime * 6) * 0.04;
             ctx.save();
-            ctx.strokeStyle = '#34d399';
-            ctx.shadowColor = '#34d399';
-            ctx.shadowBlur = 14;
-            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2.5;
             ctx.beginPath();
-            ctx.arc(cx, cy - this.height / 2, (this.height * 0.65) * pulse, 0, Math.PI * 2);
+            ctx.arc(cx, cy - this.height / 2, (this.height * 0.62) * pulse, 0, Math.PI * 2);
             ctx.stroke();
 
-            // Subtle inner glow
-            ctx.fillStyle = 'rgba(52, 211, 153, 0.15)';
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.12)';
             ctx.fill();
             ctx.restore();
         }
 
-        // Magnet Aura Visual
+        // 7. Soft Magnet Aura Visual
         if (this.hasMagnet) {
             ctx.save();
-            ctx.strokeStyle = 'rgba(56, 189, 248, 0.6)';
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.5)';
             ctx.setLineDash([6, 6]);
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.arc(cx, cy - this.height / 2, 70 + Math.sin(this.animTime * 10) * 8, 0, Math.PI * 2);
+            ctx.arc(cx, cy - this.height / 2, 65 + Math.sin(this.animTime * 8) * 6, 0, Math.PI * 2);
             ctx.stroke();
             ctx.restore();
         }
 
-        // Speed Boost Hyper Glow
+        // 8. Speed Boost Hyper Aura
         if (this.hasSpeedBoost) {
             ctx.save();
-            ctx.strokeStyle = 'rgba(232, 121, 249, 0.8)';
-            ctx.lineWidth = 4;
-            ctx.shadowColor = '#e879f9';
-            ctx.shadowBlur = 18;
-            ctx.strokeRect(this.x + 4, this.y, this.width - 8, this.height);
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.7)';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.roundRect(this.x + 4, this.y, this.width - 8, this.height, 12);
+            ctx.stroke();
             ctx.restore();
         }
 

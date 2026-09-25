@@ -1,5 +1,6 @@
 /* ==========================================================================
-   IN-GAME HUD & MOBILE VIRTUAL CONTROLS
+   IN-GAME HUD - MINIMALIST & CLEAN
+   Non-intrusive rounded pills, subtle combo gauge, and clean controls
    ========================================================================== */
 
 .game-hud {
@@ -10,7 +11,7 @@
     height: 100%;
     pointer-events: none;
     z-index: 5;
-    padding: 20px;
+    padding: 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -25,60 +26,63 @@
 }
 
 .hud-stat-box {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 8px 16px;
-    border-radius: 8px;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 18px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 100px;
+    min-width: 110px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .hud-stat-box.coins-box {
     flex-direction: row;
     gap: 8px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .hud-label {
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     color: var(--text-muted);
 }
 
 .hud-value {
     font-family: var(--font-heading);
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 800;
     color: #ffffff;
 }
 
 .hud-btn.pause-btn {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     color: #ffffff;
     width: 44px;
     height: 44px;
-    border-radius: 8px;
-    font-size: 18px;
+    border-radius: 14px;
+    font-size: 16px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.18s;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 .hud-btn.pause-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
 }
 
 /* COMBO GAUGE */
 .hud-combo-wrapper {
     position: absolute;
-    top: 76px;
-    left: 20px;
+    top: 80px;
+    left: 22px;
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -86,17 +90,15 @@
 
 .hud-combo-badge {
     font-family: var(--font-heading);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
-    letter-spacing: 1px;
-    text-shadow: 0 0 10px currentColor;
+    letter-spacing: 0.5px;
 }
 
 .hud-combo-bar-bg {
-    width: 130px;
-    height: 6px;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 120px;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.4);
     border-radius: 3px;
     overflow: hidden;
 }
@@ -104,38 +106,37 @@
 .hud-combo-bar-fill {
     width: 0%;
     height: 100%;
-    background: var(--cyan);
+    background: var(--primary-light);
     transition: width 0.1s linear;
 }
 
 /* POWER-UP TIMERS */
 .hud-powerups-container {
     position: absolute;
-    top: 76px;
-    right: 20px;
+    top: 80px;
+    right: 22px;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
 .hud-pu-badge {
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(8px);
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(10px);
     border: 1px solid #38bdf8;
-    padding: 6px 10px;
+    padding: 6px 12px;
     border-radius: 20px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 12px;
+    gap: 8px;
+    font-size: 13px;
     font-weight: 700;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    animation: bounceIn 0.25s ease-out;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    animation: gentlePop 0.2s ease-out;
 }
 
-@keyframes bounceIn {
-    0% { transform: scale(0.6); opacity: 0; }
-    80% { transform: scale(1.1); }
+@keyframes gentlePop {
+    0% { transform: scale(0.8); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
 }
 
@@ -148,61 +149,61 @@
     bottom: 24px;
     left: 0;
     width: 100%;
-    padding: 0 30px;
+    padding: 0 28px;
     display: flex;
     justify-content: space-between;
     pointer-events: auto;
 }
 
 .virtual-btn {
-    width: 96px;
-    height: 96px;
+    width: 86px;
+    height: 86px;
     border-radius: 50%;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(14px);
+    border: 2px solid rgba(255, 255, 255, 0.18);
     color: #ffffff;
     font-family: var(--font-heading);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
+    letter-spacing: 0.5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     touch-action: manipulation;
-    transition: transform 0.1s, border-color 0.1s;
+    transition: transform 0.12s, background 0.12s, border-color 0.12s;
 }
 
 .virtual-btn:active {
-    transform: scale(0.9);
-    border-color: var(--cyan);
+    transform: scale(0.92);
+    border-color: #38bdf8;
     background: rgba(56, 189, 248, 0.25);
 }
 
 .virtual-btn.slide-btn {
-    border-color: rgba(236, 72, 153, 0.4);
+    border-color: rgba(244, 63, 94, 0.35);
 }
 .virtual-btn.slide-btn:active {
-    border-color: var(--accent);
-    background: rgba(236, 72, 153, 0.3);
+    border-color: #f43f5e;
+    background: rgba(244, 63, 94, 0.25);
 }
 
 .virtual-btn.jump-btn {
-    border-color: rgba(6, 182, 212, 0.4);
+    border-color: rgba(16, 185, 129, 0.35);
 }
 .virtual-btn.jump-btn:active {
-    border-color: var(--cyan);
-    background: rgba(6, 182, 212, 0.3);
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.25);
 }
 
 @media (min-width: 1025px) {
-    /* Hide on-screen buttons on large desktop screens unless touch is preferred */
     .mobile-controls-overlay {
-        opacity: 0.4;
+        opacity: 0.3;
         transition: opacity 0.2s;
     }
     .mobile-controls-overlay:hover {
-        opacity: 0.9;
+        opacity: 0.85;
     }
 }

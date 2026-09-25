@@ -78,7 +78,14 @@ export class Collectible {
 
         const cx = this.x + this.width / 2;
         const cy = this.y + this.height / 2;
-        const spinScale = Math.cos(this.animTime * 6);
+
+        // Soft ground drop-shadow beneath floating collectible
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+        ctx.beginPath();
+        ctx.ellipse(cx, 560 + 2, 10, 3, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        const spinScale = Math.cos(this.animTime * 5.5);
 
         ctx.translate(cx, cy);
         ctx.scale(spinScale, 1.0);
@@ -93,47 +100,50 @@ export class Collectible {
     }
 
     renderCoin(ctx) {
-        // Outer gold rim
-        ctx.fillStyle = '#f59e0b';
+        // Outer rim
+        ctx.fillStyle = '#d97706';
         ctx.beginPath();
-        ctx.arc(0, 0, 12, 0, Math.PI * 2);
+        ctx.arc(0, 0, 13, 0, Math.PI * 2);
         ctx.fill();
 
-        // Inner glowing face
-        ctx.fillStyle = '#facc15';
+        // Inner golden face
+        ctx.fillStyle = '#fbbf24';
         ctx.beginPath();
-        ctx.arc(0, 0, 9, 0, Math.PI * 2);
+        ctx.arc(0, 0, 10, 0, Math.PI * 2);
         ctx.fill();
 
-        // Embossed dollar / cyber symbol
+        // Embossed star
         ctx.fillStyle = '#b45309';
-        ctx.font = 'bold 11px system-ui';
+        ctx.font = 'bold 10px system-ui';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('⚡', 0, 0);
+        ctx.fillText('★', 0, 0.5);
+
+        // Specular highlight glint
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        ctx.beginPath();
+        ctx.arc(-4, -4, 3, 0, Math.PI * 2);
+        ctx.fill();
     }
 
     renderGem(ctx) {
         ctx.fillStyle = '#38bdf8';
-        ctx.shadowColor = '#38bdf8';
-        ctx.shadowBlur = 10;
-
         ctx.beginPath();
-        ctx.moveTo(0, -14);
-        ctx.lineTo(12, -4);
-        ctx.lineTo(8, 14);
-        ctx.lineTo(-8, 14);
-        ctx.lineTo(-12, -4);
+        ctx.moveTo(0, -15);
+        ctx.lineTo(13, -5);
+        ctx.lineTo(9, 14);
+        ctx.lineTo(-9, 14);
+        ctx.lineTo(-13, -5);
         ctx.closePath();
         ctx.fill();
 
-        // Facet reflection
-        ctx.fillStyle = '#bae6fd';
+        // Top facet reflection
+        ctx.fillStyle = '#e0f2fe';
         ctx.beginPath();
-        ctx.moveTo(0, -14);
-        ctx.lineTo(5, -4);
-        ctx.lineTo(0, 6);
-        ctx.lineTo(-5, -4);
+        ctx.moveTo(0, -15);
+        ctx.lineTo(6, -5);
+        ctx.lineTo(0, 5);
+        ctx.lineTo(-6, -5);
         ctx.closePath();
         ctx.fill();
     }
