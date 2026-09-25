@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: runner-game
+    name: cyber-runner-overdrive
     runtime: static
     buildCommand: ""
     staticPublishPath: .

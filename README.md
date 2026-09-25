@@ -152,12 +152,12 @@ You can deploy this game on [Render](https://render.com) for free in seconds:
 2. Click **New +** and select **Static Site** (or **Blueprint** to use `render.yaml`).
 3. Select your repository: `https://github.com/avivekgoud/runner-game`.
 4. Configure settings:
-   - **Name**: `runner-game` (or your chosen name)
+   - **Name**: `cyber-runner-overdrive` (or your chosen name)
    - **Branch**: `main`
    - **Build Command**: *(leave empty)*
    - **Publish Directory**: `.`
 5. Click **Create Static Site**.
-Render will deploy the site immediately on a free global CDN with SSL HTTPS (e.g. `https://runner-game.onrender.com`).
+Render will deploy the site immediately on a free global CDN with SSL HTTPS (e.g. `https://cyber-runner-overdrive.onrender.com`).
 
 ### Deploy on GitHub Pages
 1. Go to your GitHub repository **Settings > Pages**.
